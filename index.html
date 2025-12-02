@@ -3,77 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rhea Cisa - Resume</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Rhea Nygard - Career Progression</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #0f172a; /* Dark Slate */
+            color: #cbd5e1; /* Light Slate Text */
+            font-family: 'Urbanist', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Header Text */
+        .header-text {
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5;
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            color: #f8fafc;
+        }
+
+        /* Timeline Container */
+        .timeline-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            gap: 20px;
+        }
+
+        /* Individual Step */
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Icon Circle */
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            border: 2px solid #deff9a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(222, 255, 154, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover .icon-circle {
+            transform: scale(1.05);
+            background-color: #deff9a;
+        }
+
+        .icon-circle i {
+            font-size: 40px;
+            color: #deff9a;
+            transition: color 0.3s ease;
+        }
+
+        .step:hover .icon-circle i {
+            color: #0f172a;
+        }
+
+        /* Connecting Arrows */
+        .arrow-connector {
+            position: absolute;
+            top: 50px; /* Center with circle */
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #334155 0%, #deff9a 50%, #334155 100%);
+            z-index: 1;
+            display: none; /* Hidden by default, handled by pseudo elements if needed, or simple spacers */
+        }
+        
+        /* Using FontAwesome Chevrons for arrows between steps */
+        .chevron-separator {
+            align-self: flex-start;
+            margin-top: 40px; /* Align with icons */
+            color: #475569;
+            font-size: 24px;
+        }
+
+        /* Text Content */
+        .role-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f8fafc;
+            margin: 0 0 5px 0;
+        }
+
+        .role-duration {
+            font-size: 18px;
+            color: #deff9a;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .role-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #94a3b8;
+            padding: 0 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .timeline-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .chevron-separator {
+                transform: rotate(90deg);
+                align-self: center;
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Rhea Cisa</h1>
-            <p class="tagline">Professional Resume</p>
-            <a href="resume.pdf" download class="download-btn">Download Resume (PDF)</a>
-        </header>
 
-        <main>
-            <section class="section">
-                <h2>Contact Information</h2>
-                <ul class="contact-info">
-                    <li>Email: rheacisa@example.com</li>
-                    <li>Phone: (123) 456-7890</li>
-                    <li>Location: City, State</li>
-                    <li>LinkedIn: linkedin.com/in/rheacisa</li>
-                </ul>
-            </section>
+<div class="container">
+    <p class="header-text">
+        Rhea is a leader who speaks the languages of banking, auditing, regulation, and technology.
+    </p>
 
-            <section class="section">
-                <h2>Summary</h2>
-                <p>A dedicated professional with experience in [your field]. Passionate about [your interests] and committed to delivering high-quality results.</p>
-            </section>
+    <div class="timeline-wrapper">
+        
+        <!-- Step 1: Auditor (Moved to first position) -->
+        <div class="step">
+            <div class="icon-circle">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <h3 class="role-title">Auditor</h3>
+            <div class="role-duration">8 Years | Deloitte</div>
+            <p class="role-description">
+                Third line of defense. Mastered the art of making workpapers stand on their own and assessing controls with rigorous evidence.
+            </p>
+        </div>
 
-            <section class="section">
-                <h2>Experience</h2>
-                <div class="experience-item">
-                    <h3>Job Title</h3>
-                    <p class="company">Company Name | Start Date - Present</p>
-                    <ul>
-                        <li>Accomplishment or responsibility 1</li>
-                        <li>Accomplishment or responsibility 2</li>
-                        <li>Accomplishment or responsibility 3</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>Previous Job Title</h3>
-                    <p class="company">Previous Company | Start Date - End Date</p>
-                    <ul>
-                        <li>Accomplishment or responsibility 1</li>
-                        <li>Accomplishment or responsibility 2</li>
-                    </ul>
-                </div>
-            </section>
+        <i class="fa-solid fa-chevron-right chevron-separator"></i>
 
-            <section class="section">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <h3>Degree Name</h3>
-                    <p>University Name | Graduation Year</p>
-                </div>
-            </section>
+        <!-- Step 2: Banker (Moved to second position) -->
+        <div class="step">
+            <div class="icon-circle">
+                <i class="fa-solid fa-vault"></i>
+            </div>
+            <h3 class="role-title">Banker</h3>
+            <div class="role-duration">6 Years | Citi</div>
+            <p class="role-description">
+                First and second line of defense. Understands business pressures, IT implementation for compliance, and end-to-end payment systems.
+            </p>
+        </div>
 
-            <section class="section">
-                <h2>Skills</h2>
-                <ul class="skills-list">
-                    <li>Skill 1</li>
-                    <li>Skill 2</li>
-                    <li>Skill 3</li>
-                    <li>Skill 4</li>
-                    <li>Skill 5</li>
-                </ul>
-            </section>
-        </main>
+        <i class="fa-solid fa-chevron-right chevron-separator"></i>
 
-        <footer>
-            <p>&copy; 2024 Rhea Cisa. All rights reserved.</p>
-        </footer>
+        <!-- Step 3: Regulator -->
+        <div class="step">
+            <div class="icon-circle">
+                <i class="fa-solid fa-landmark"></i>
+            </div>
+            <h3 class="role-title">Regulator</h3>
+            <div class="role-duration">16+ Years | FDIC & Fed (FRB Dallas and Board of Governors)</div>
+            <p class="role-description">
+                Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, and the operational resilience, cybersecurity and financial stability.
+            </p>
+        </div>
+
+        <i class="fa-solid fa-chevron-right chevron-separator"></i>
+
+        <!-- Step 4: Technologist -->
+        <div class="step">
+            <div class="icon-circle">
+                <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="role-title">Technologist</h3>
+            <div class="role-duration">Lifelong Learner</div>
+            <p class="role-description">
+                A self-starter who relentlessly upskills to understand and counter emerging threats.
+            </p>
+        </div>
+
     </div>
+</div>
+
 </body>
 </html>

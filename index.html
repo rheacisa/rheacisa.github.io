@@ -87,6 +87,75 @@
             color: #0f172a;
         }
 
+        /* Detail Toggle Button */
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid #deff9a;
+            color: #deff9a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(222, 255, 154, 0.1);
+        }
+
+        /* Hidden Details Section */
+        .step-details {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            text-align: left;
+            width: 100%;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-details h4 {
+            color: #f8fafc;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .step-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step-details li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .step-details li::before {
+            content: '•';
+            color: #deff9a;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
         /* Connecting Arrows */
         .arrow-connector {
             position: absolute;
@@ -333,7 +402,7 @@
 
 <div class="container">
     <p class="header-text">
-        Rhea is a leader who speaks the languages of banking, auditing, regulation, and technology.
+        Rhea is a leader who speaks the languages of auditing, banking, regulation, and technology.
     </p>
 
     <div class="timeline-wrapper">
@@ -341,13 +410,27 @@
         <!-- Step 1: Auditor (Moved to first position) -->
         <div class="step">
             <div class="icon-circle">
-                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
             </div>
             <h3 class="role-title">Auditor</h3>
             <div class="role-duration">8 Years | Deloitte</div>
             <p class="role-description">
-                Third line of defense. Mastered the art of making workpapers stand on their own and assessing controls with rigorous evidence.
+                Third line of defense. Mastered the art of making workpapers stand on their own and assessing controls with evidence.
             </p>
+            
+            <button class="toggle-btn" onclick="toggleDetails('auditor-details', this)">
+                <i class="fa-solid fa-chevron-down"></i> more
+            </button>
+
+            <div id="auditor-details" class="step-details">
+                <h4>Auditor / Consultant | Deloitte</h4>
+                <ul>
+                    <li>Conducted full-scope audit activities, including pre-engagement planning, internal controls testing, and audit fieldwork for financial statements and management letters.</li>
+                    <li>Successfully applied Generally Accepted Accounting Principles (GAAP) across engagements in diverse industries, including power utility, trust, publishing, and pipe distribution.</li>
+                    <li>Participated in international and domestic assignments, including a Deloitte exchange program with travel to Yap, Marshall Islands, and Australia, as well as a transition to Deloitte USA to service new clients in Las Vegas, Reno, Colorado, and Los Angeles.</li>
+                    <li><strong>Certification:</strong> CPA (Certified Public Accountant)</li>
+                </ul>
+            </div>
         </div>
 
         <i class="fa-solid fa-chevron-right chevron-separator"></i>
@@ -360,8 +443,49 @@
             <h3 class="role-title">Banker</h3>
             <div class="role-duration">6 Years | Citi</div>
             <p class="role-description">
-                First and second line of defense. Understands business pressures, IT implementation for compliance, and end-to-end payment systems.
+                First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems
             </p>
+
+            <button class="toggle-btn" onclick="toggleDetails('banker-details', this)">
+                <i class="fa-solid fa-chevron-down"></i> more
+            </button>
+
+            <div id="banker-details" class="step-details">
+                <h4>Banker | Citi</h4>
+                <ul>
+                    <li><strong>Product Management & Technology Leadership:</strong> Expertise in managing and developing consumer and corporate deposit products and business loans across onshore and offshore markets (Singapore, Asia-Pacific). Served as SME on Eclipse CRM and Sales Station for Retail Bank Deposits. Led the development of functional specifications and user acceptance testing (UAT) for new platform features in the Business Online project, wealth planning, and sales consultation, including recommending a tailored security matrix.</li>
+                    <li><strong>Compliance & Regulatory Expertise:</strong> Critical resource for functional specifications, ensuring platform features and deposit sales processes (e.g., account opening, charging sequence) complied with country-specific rules, including USA Reg C (funds availability) and Reg DD (limits on transfers). Deep experience coordinating complex regulatory projects, including leading OCC reviews for deposits and coordinating multi-country initiatives like the "Rainbow project" across seven Citi countries in Asia.</li>
+                    <li><strong>Financial Control & Audit:</strong> Skilled in managing internal control, General Ledger (GL) reconciliation, and leading audit reviews. Successfully led the migration of GL systems and automated reconciliation processes, reducing a key task time from one hour to 15 minutes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <i class="fa-solid fa-chevron-right chevron-separator"></i>
+
+        <!-- Step 2: Banker (Moved to second position) -->
+        <div class="step">
+            <div class="icon-circle">
+                <i class="fa-solid fa-vault"></i>
+            </div>
+            <h3 class="role-title">Banker</h3>
+            <div class="role-duration">6 Years | Citi</div>
+            <p class="role-description">
+                First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems
+            </p>
+
+            <button class="toggle-btn" onclick="toggleDetails('banker-details', this)">
+                <i class="fa-solid fa-chevron-down"></i> more
+            </button>
+
+            <div id="banker-details" class="step-details">
+                <h4>Banker | Citi</h4>
+                <ul>
+                    <li><strong>Product Management & Technology Leadership:</strong> Expertise in managing and developing consumer and corporate deposit products and business loans across onshore and offshore markets (Singapore, Asia-Pacific). Served as SME on Eclipse CRM and Sales Station for Retail Bank Deposits. Led the development of functional specifications and user acceptance testing (UAT) for new platform features in the Business Online project, wealth planning, and sales consultation, including recommending a tailored security matrix.</li>
+                    <li><strong>Compliance & Regulatory Expertise:</strong> Critical resource for functional specifications, ensuring platform features and deposit sales processes (e.g., account opening, charging sequence) complied with country-specific rules, including USA Reg C (funds availability) and Reg DD (limits on transfers). Deep experience coordinating complex regulatory projects, including leading OCC reviews for deposits and coordinating multi-country initiatives like the "Rainbow project" across seven Citi countries in Asia.</li>
+                    <li><strong>Financial Control & Audit:</strong> Skilled in managing internal control, General Ledger (GL) reconciliation, and leading audit reviews. Successfully led the migration of GL systems and automated reconciliation processes, reducing a key task time from one hour to 15 minutes.</li>
+                    <li><strong>Certification:</strong> CPA (Certified Public Accountant)</li>
+                </ul>
+            </div>
         </div>
 
         <i class="fa-solid fa-chevron-right chevron-separator"></i>
@@ -372,10 +496,49 @@
                 <i class="fa-solid fa-landmark"></i>
             </div>
             <h3 class="role-title">Regulator</h3>
-            <div class="role-duration">16+ Years | FDIC & Fed (FRB Dallas and Board of Governors)</div>
+            <div class="role-duration">16+ Years | FDIC & Fed</div>
             <p class="role-description">
                 Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, operational resilience, cybersecurity and financial stability.
             </p>
+
+            <button class="toggle-btn" onclick="toggleDetails('regulator-details', this)">
+                <i class="fa-solid fa-chevron-down"></i> more
+            </button>
+
+            <div id="regulator-details" class="step-details">
+                <h4>Regulator | Experience Details</h4>
+                
+                <div style="margin-bottom: 8px;">
+                    <strong style="color: #deff9a;">Board of Governors, Senior Cybersecurity Policy Analyst</strong>
+                </div>
+                <ul>
+                    <li>Shaped domestic and international cybersecurity and operational resilience policies, with a specialized focus on emerging technologies (e.g., AI, Quantum Computing, Blockchain) and managing third-party risk.</li>
+                </ul>
+
+                <div style="margin-bottom: 8px; margin-top: 15px;">
+                    <strong style="color: #deff9a;">Dallas FRB, Safety and Soundness, and IT Commissioned Examiner</strong>
+                </div>
+                <ul>
+                    <li>Developed and delivered specialized internal training curricula concerning emerging technologies, including blockchain and crypto-assets.</li>
+                    <li>Led critical, specialized IT examinations for key Financial Market Infrastructures (FMIs) and Technology Service Providers (TSPs).</li>
+                    <li>Directed operational risk validation for financial institutions operating under enforcement actions.</li>
+                </ul>
+
+                <div style="margin-bottom: 8px; margin-top: 15px;">
+                    <strong style="color: #deff9a;">FDIC, Financial Institution Accountant (Bank Failure Resolution Support)</strong>
+                </div>
+                <ul>
+                    <li>Served as a core member of the pro-forma team during bank failure resolutions.</li>
+                    <li>Quickly prepared opening balance sheets for acquiring institutions, offering direct insight into systemic issues that prompted financial failure and regulatory intervention.</li>
+                </ul>
+
+                <div style="margin-bottom: 8px; margin-top: 15px;">
+                    <strong style="color: #deff9a;">Certifications</strong>
+                </div>
+                <ul>
+                    <li>Certified Anti-Money Laundering Specialist (ACAMS)</li>
+                </ul>
+            </div>
         </div>
 
         <i class="fa-solid fa-chevron-right chevron-separator"></i>
@@ -390,26 +553,65 @@
             <p class="role-description">
                 A self-starter who relentlessly upskills to understand and counter emerging threats.
             </p>
+
+            <button class="toggle-btn" onclick="toggleDetails('technologist-details', this)">
+                <i class="fa-solid fa-chevron-down"></i> more
+            </button>
+
+            <div id="technologist-details" class="step-details">
+                <h4>Technologist | Skills & Certifications</h4>
+                
+                <div style="margin-bottom: 8px;">
+                    <strong style="color: #deff9a;">Cybersecurity</strong>
+                </div>
+                <ul>
+                    <li><strong>GCIH:</strong> Certified Incident Handler</li>
+                    <li><strong>CISA:</strong> Certified Information Systems Auditor</li>
+                    <li><strong>CCZT:</strong> Certificate of Competence in Zero Trust</li>
+                    <li><strong>GFACT:</strong> GIAC Foundational Cybersecurity Technologies</li>
+                    <li><strong>GSTRT:</strong> Strategic Planning, Policy and Leadership</li>
+                </ul>
+
+                <div style="margin-bottom: 8px; margin-top: 15px;">
+                    <strong style="color: #deff9a;">Cloud</strong>
+                </div>
+                <ul>
+                    <li><strong>AWS:</strong> Certified Cloud Practitioner</li>
+                    <li><strong>Google Cloud:</strong> Digital Leader</li>
+                    <li><strong>Azure:</strong> AI & Data Fundamentals</li>
+                    <li><strong>GCLD:</strong> Cloud Security Essentials</li>
+                    <li><strong>CCSK:</strong> Certified Cloud Security Knowledge</li>
+                </ul>
+
+                <div style="margin-bottom: 8px; margin-top: 15px;">
+                    <strong style="color: #deff9a;">Emerging Tech</strong>
+                </div>
+                <ul>
+                    <li>Professional development courses on AI, Quantum, Blockchain, Smart Contract through SANS Technology Institute, MIT and University of Texas at Austin</li>
+                    <li>Subject Matter Expert (SME) for ISACA CISA test bank.</li>
+                </ul>
+            </div>
         </div>
 
     </div>
-</div>
 
-<!-- AI Features Interface -->
-<div class="ai-controls">
-    <button class="ai-btn" onclick="analyzeCareer()">
-        <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Career Path
-    </button>
-    <button class="ai-btn" onclick="toggleChat()">
-        <i class="fa-solid fa-comments"></i> Chat with Sentinel
-    </button>
-</div>
-
-<div class="container ai-output-container" id="analysisResult">
-    <h4><i class="fa-solid fa-chart-line"></i> Career Analysis</h4>
-    <div class="ai-content" id="analysisContent">
-        <span class="loading-dots">Generating insights based on timeline data</span>
+    <!-- AI Features Interface (Moved inside container) -->
+    <div class="ai-controls">
+        <button class="ai-btn" onclick="analyzeCareer()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Career Path
+        </button>
+        <button class="ai-btn" onclick="toggleChat()">
+            <i class="fa-solid fa-comments"></i> Chat with Sentinel
+        </button>
     </div>
+
+    <div class="ai-output-container" id="analysisResult">
+        <h4><i class="fa-solid fa-chart-line"></i> Career Analysis</h4>
+        <div class="ai-content" id="analysisContent">
+            <span class="loading-dots">Generating insights based on timeline data</span>
+        </div>
+    </div>
+
 </div>
 
 <!-- Chat Widget -->
@@ -476,6 +678,24 @@
 
     // 3. Chat Feature
     let isChatOpen = false;
+
+    // Toggle Details Function
+    function toggleDetails(id, btn) {
+        const details = document.getElementById(id);
+        const icon = btn.querySelector('i');
+        
+        if (details.style.display === 'block') {
+            details.style.display = 'none';
+            btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i> more';
+            btn.style.background = 'transparent';
+            btn.style.color = '#deff9a';
+        } else {
+            details.style.display = 'block';
+            btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i> less';
+            btn.style.background = '#deff9a';
+            btn.style.color = '#0f172a';
+        }
+    }
 
     function toggleChat() {
         const widget = document.getElementById('chatWidget');

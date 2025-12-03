@@ -240,11 +240,23 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 15px rgba(222, 255, 154, 0.2);
+            text-decoration: none;
         }
 
         .ai-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(222, 255, 154, 0.4);
+        }
+
+        .ai-btn.secondary {
+            background: transparent;
+            border: 2px solid #334155;
+            color: #94a3b8;
+            box-shadow: none;
+        }
+        .ai-btn.secondary:hover {
+            border-color: #deff9a;
+            color: #deff9a;
         }
 
         .ai-btn i { font-size: 20px; }
@@ -280,6 +292,10 @@
             white-space: pre-line;
         }
 
+        .ai-content strong {
+            color: #deff9a;
+        }
+
         /* Chat Widget */
         .chat-widget {
             position: fixed;
@@ -311,8 +327,32 @@
         }
 
         .chat-header h4 { margin: 0; color: #f8fafc; font-size: 18px; font-weight: 700; }
-        .close-chat { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 20px; transition: color 0.2s; }
-        .close-chat:hover { color: #f8fafc; }
+        
+        /* Updated Header Controls */
+        .chat-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .header-btn { 
+            background: none; 
+            border: none; 
+            color: #94a3b8; /* Default grey */
+            cursor: pointer; 
+            font-size: 20px; /* Increased Size */
+            transition: all 0.2s; 
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-btn:hover { color: #f8fafc; transform: scale(1.1); }
+        
+        /* Info button specifically bright */
+        .header-btn.info-btn { color: #deff9a; } 
+        .header-btn.info-btn:hover { color: #bef264; }
 
         .chat-messages {
             flex: 1;
@@ -407,7 +447,7 @@
 
     <div class="timeline-wrapper">
         
-        <!-- Step 1: Auditor (Moved to first position) -->
+        <!-- Step 1: Auditor -->
         <div class="step">
             <div class="icon-circle">
                 <i class="fa-solid fa-magnifying-glass-chart"></i>
@@ -435,7 +475,7 @@
 
         <i class="fa-solid fa-chevron-right chevron-separator"></i>
 
-        <!-- Step 2: Banker (Moved to second position) -->
+        <!-- Step 2: Banker -->
         <div class="step">
             <div class="icon-circle">
                 <i class="fa-solid fa-vault"></i>
@@ -456,34 +496,6 @@
                     <li><strong>Product Management & Technology Leadership:</strong> Expertise in managing and developing consumer and corporate deposit products and business loans across onshore and offshore markets (Singapore, Asia-Pacific). Served as SME on Eclipse CRM and Sales Station for Retail Bank Deposits. Led the development of functional specifications and user acceptance testing (UAT) for new platform features in the Business Online project, wealth planning, and sales consultation, including recommending a tailored security matrix.</li>
                     <li><strong>Compliance & Regulatory Expertise:</strong> Critical resource for functional specifications, ensuring platform features and deposit sales processes (e.g., account opening, charging sequence) complied with country-specific rules, including USA Reg C (funds availability) and Reg DD (limits on transfers). Deep experience coordinating complex regulatory projects, including leading OCC reviews for deposits and coordinating multi-country initiatives like the "Rainbow project" across seven Citi countries in Asia.</li>
                     <li><strong>Financial Control & Audit:</strong> Skilled in managing internal control, General Ledger (GL) reconciliation, and leading audit reviews. Successfully led the migration of GL systems and automated reconciliation processes, reducing a key task time from one hour to 15 minutes.</li>
-                </ul>
-            </div>
-        </div>
-
-        <i class="fa-solid fa-chevron-right chevron-separator"></i>
-
-        <!-- Step 2: Banker (Moved to second position) -->
-        <div class="step">
-            <div class="icon-circle">
-                <i class="fa-solid fa-vault"></i>
-            </div>
-            <h3 class="role-title">Banker</h3>
-            <div class="role-duration">6 Years | Citi</div>
-            <p class="role-description">
-                First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems
-            </p>
-
-            <button class="toggle-btn" onclick="toggleDetails('banker-details', this)">
-                <i class="fa-solid fa-chevron-down"></i> more
-            </button>
-
-            <div id="banker-details" class="step-details">
-                <h4>Banker | Citi</h4>
-                <ul>
-                    <li><strong>Product Management & Technology Leadership:</strong> Expertise in managing and developing consumer and corporate deposit products and business loans across onshore and offshore markets (Singapore, Asia-Pacific). Served as SME on Eclipse CRM and Sales Station for Retail Bank Deposits. Led the development of functional specifications and user acceptance testing (UAT) for new platform features in the Business Online project, wealth planning, and sales consultation, including recommending a tailored security matrix.</li>
-                    <li><strong>Compliance & Regulatory Expertise:</strong> Critical resource for functional specifications, ensuring platform features and deposit sales processes (e.g., account opening, charging sequence) complied with country-specific rules, including USA Reg C (funds availability) and Reg DD (limits on transfers). Deep experience coordinating complex regulatory projects, including leading OCC reviews for deposits and coordinating multi-country initiatives like the "Rainbow project" across seven Citi countries in Asia.</li>
-                    <li><strong>Financial Control & Audit:</strong> Skilled in managing internal control, General Ledger (GL) reconciliation, and leading audit reviews. Successfully led the migration of GL systems and automated reconciliation processes, reducing a key task time from one hour to 15 minutes.</li>
-                    <li><strong>Certification:</strong> CPA (Certified Public Accountant)</li>
                 </ul>
             </div>
         </div>
@@ -597,18 +609,18 @@
 
     <!-- AI Features Interface (Moved inside container) -->
     <div class="ai-controls">
-        <button class="ai-btn" onclick="analyzeCareer()">
+        <button class="ai-btn" onclick="revealAnalysis()">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Career Path
         </button>
-        <button class="ai-btn" onclick="toggleChat()">
-            <i class="fa-solid fa-comments"></i> Chat with Sentinel
+        <button class="ai-btn secondary" onclick="toggleChat()">
+            <i class="fa-solid fa-comments"></i> Chat with Digital Twin
         </button>
     </div>
 
     <div class="ai-output-container" id="analysisResult">
         <h4><i class="fa-solid fa-chart-line"></i> Career Analysis</h4>
         <div class="ai-content" id="analysisContent">
-            <span class="loading-dots">Generating insights based on timeline data</span>
+            
         </div>
     </div>
 
@@ -617,12 +629,19 @@
 <!-- Chat Widget -->
 <div class="chat-widget" id="chatWidget">
     <div class="chat-header">
-        <h4><i class="fa-solid fa-robot"></i> Rhea's Career Sentinel</h4>
-        <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+        <h4><i class="fa-solid fa-user-astronaut"></i> Rhea's Digital Twin</h4>
+        <div class="chat-controls">
+            <button class="header-btn info-btn" onclick="showChatInfo()" title="About this simulation">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+            <button class="header-btn" onclick="toggleChat()" title="Close chat">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
     </div>
     <div class="chat-messages" id="chatMessages">
         <div class="message ai-msg">
-            Hello! I am the AI Sentinel. I've analyzed Rhea's career timeline. Ask me about her regulatory experience, technical skills, or banking background.
+            Hello! I can answer questions about her experience or skills. This is for DEMO purposes only.
         </div>
     </div>
     <div class="chat-input-area">
@@ -632,52 +651,33 @@
 </div>
 
 <script>
-    const apiKey = ""; // System provides this at runtime
-
-    // 1. Context Extraction
-    function getTimelineContext() {
-        const header = document.querySelector('.header-text').innerText;
-        const steps = Array.from(document.querySelectorAll('.step')).map(step => {
-            const role = step.querySelector('.role-title').innerText;
-            const duration = step.querySelector('.role-duration').innerText;
-            const desc = step.querySelector('.role-description').innerText;
-            return `Role: ${role}\nDuration: ${duration}\nDetails: ${desc}`;
-        }).join('\n\n');
-        
-        return `Bio Header: ${header}\n\nTimeline:\n${steps}`;
-    }
-
-    // 2. Career Analysis Feature
-    async function analyzeCareer() {
+    // 2. Career Analysis Feature (Now Pre-Baked/Static)
+    function revealAnalysis() {
         const container = document.getElementById('analysisResult');
         const contentDiv = document.getElementById('analysisContent');
         container.style.display = 'block';
-        contentDiv.innerHTML = '<span class="loading-dots">Analyzing career trajectory using Gemini</span>';
+        
+        // This content is pre-generated so it works for recruiters without an API key
+        contentDiv.innerHTML = `
+        <strong>Value Proposition</strong><br>
+        Rhea sits at the rare intersection of <strong>Regulatory Authority</strong> and <strong>Technical Reality</strong>. Most professionals are either "Policy Architects" who lack technical depth or "Technologists" who lack regulatory context. Rhea is a <strong>Strategic Synthesizer</strong>—she can audit the code (Technologist), assess the control environment (Auditor), understand the business pressure (Banker), and uphold the safety and soundness standard (Regulator). This allows her to identify systemic risks in emerging tech (AI, Quantum) that single-domain experts miss.<br><br>
+        <strong>Strategic Future Trajectories:</strong>
+        <ul>
+        <li><strong>Chief AI Assurance Officer:</strong> Bridging the gap between data science teams and regulatory compliance to operationalize AI governance.</li>
+        <li><strong>Head of Financial Stability Innovation:</strong> Leading a lab or division dedicated to stress-testing financial systems against next-generation cyber and quantum threats.</li>
+        </ul>
+        `;
 
         // Scroll to the result
         container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        const context = getTimelineContext();
-        const prompt = `Act as an executive career coach. Analyze the following career timeline for Rhea Nygard. 
-        Identify the unique value proposition created by the intersection of these specific roles (Auditor, Banker, Regulator, Technologist). 
-        Suggest 2 strategic future roles that would leverage this specific combination of skills.
-        Keep it professional, concise, and use bullet points.
-        
-        ${context}`;
-
-        try {
-            const response = await callGemini(prompt);
-            // Format bullet points for HTML
-            const formattedResponse = response.replace(/\*/g, '•').replace(/\n/g, '<br>');
-            contentDiv.innerHTML = formattedResponse;
-        } catch (error) {
-            contentDiv.innerHTML = "Error analyzing profile. Please try again.";
-            console.error(error);
-        }
     }
 
-    // 3. Chat Feature
+    // 3. Chat Feature (Keyword-based simulation)
     let isChatOpen = false;
+
+    function showChatInfo() {
+        alert("Simulation Info:\n\nThis chat widget is a static mockup for demonstration purposes.\n\nIt uses simple keyword matching logic to retrieve resume data and does NOT use live Generative AI (LLMs). This ensures the responses are strictly controlled, safe, and require no API keys.");
+    }
 
     // Toggle Details Function
     function toggleDetails(id, btn) {
@@ -721,7 +721,7 @@
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    async function sendMessage() {
+    function sendMessage() {
         const input = document.getElementById('chatInput');
         const userText = input.value.trim();
         if (!userText) return;
@@ -730,7 +730,7 @@
         input.value = '';
         appendMessage(userText, 'user');
 
-        // Show loading state
+        // Simulate thinking time
         const loadingId = 'loading-' + Date.now();
         const loadingDiv = document.createElement('div');
         loadingDiv.className = 'message ai-msg loading-dots';
@@ -738,45 +738,49 @@
         loadingDiv.innerText = 'Thinking';
         document.getElementById('chatMessages').appendChild(loadingDiv);
 
-        const context = getTimelineContext();
-        const prompt = `You are a helpful AI assistant representing Rhea Nygard. Use the following resume data to answer the user's question. 
-        If the answer is not in the data, state that you don't have that information. Be professional and enthusiastic.
-        
-        Resume Data:
-        ${context}
-        
-        User Question: ${userText}`;
-
-        try {
-            const response = await callGemini(prompt);
+        setTimeout(() => {
+            const response = getBotResponse(userText.toLowerCase());
             document.getElementById(loadingId).remove();
             appendMessage(response, 'ai');
-        } catch (error) {
-            document.getElementById(loadingId).remove();
-            appendMessage("I'm having trouble connecting right now. Please try again.", 'ai');
-        }
+        }, 600);
     }
 
-    // Core Gemini API Call
-    async function callGemini(prompt) {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+    // Local "Bot" Logic to avoid API Keys
+    function getBotResponse(input) {
+        // Safety First: content is hardcoded, so no external AI can inject vulgarity.
         
-        const payload = {
-            contents: [{
-                parts: [{ text: prompt }]
-            }]
-        };
+        // Auditor / Deloitte
+        if (input.includes('audit') || input.includes('deloitte') || input.includes('accounting') || input.includes('cpa')) {
+            return "At Deloitte (8 years), Rhea audited financial institutions and government agencies. She has her CPA and conducted full-scope audit activities including internal controls testing and GL reconciliation.";
+        }
+        
+        // Banker / Citi
+        if (input.includes('bank') || input.includes('citi') || input.includes('product') || input.includes('payment')) {
+            return "At Citi (6 years), Rhea managed the full product life cycle for deposits and business loans. She worked on the 'Rainbow project' across 7 countries and reduced GL reconciliation time from 1 hour to 15 minutes.";
+        }
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
+        // Regulator / Fed / FDIC
+        if (input.includes('regulat') || input.includes('fed') || input.includes('fdic') || input.includes('policy') || input.includes('board') || input.includes('dallas')) {
+            return "Rhea has 16+ years of regulatory experience at the FDIC and Federal Reserve (Dallas & Board). She shaped G7 cyber policy, led IT examinations for FMIs, and handled bank failure resolutions.";
+        }
 
-        if (!response.ok) throw new Error('API Error');
+        // Tech / Certifications
+        if (input.includes('tech') || input.includes('cyber') || input.includes('cloud') || input.includes('ai') || input.includes('cert') || input.includes('quantum')) {
+            return "Rhea is a lifelong technologist. She holds certifications like GCIH, CISA, CCZT, CCSK, AWS Cloud Practitioner, and Azure AI. She is actively studying Quantum Computing and Blockchain.";
+        }
 
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text;
+        // Contact
+        if (input.includes('contact') || input.includes('email') || input.includes('hire') || input.includes('resume')) {
+            return "You can reach Rhea at rhea.nygard@frb.gov or connect via LinkedIn.";
+        }
+
+        // Greeting
+        if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
+            return "Hi there! I'm ready to answer questions about Rhea's career.";
+        }
+
+        // Default - Strict Safety Fallback
+        return "I don't have enough information to answer that. Please ask about Rhea's professional experience, certifications, or skills.";
     }
 </script>
 

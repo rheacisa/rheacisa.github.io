@@ -9,427 +9,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            900: '#0f172a', // Main Background
+                            800: '#1e293b', // Card Background
+                            700: '#334155', // Borders/Lines
+                            300: '#cbd5e1', // Body Text
+                            50: '#f8fafc',  // Headings
+                        },
+                        lime: {
+                            accent: '#deff9a', // The signature green
+                            hover: '#bef264',
+                        }
+                    },
+                    fontFamily: {
+                        urbanist: ['Urbanist', 'sans-serif'],
+                    },
+                    animation: {
+                        'dash': 'dash 3s linear infinite',
+                        'pulse-ring': 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
+                        'fade-in': 'fadeIn 0.5s ease forwards',
+                    },
+                    keyframes: {
+                        dash: {
+                            'to': { strokeDashoffset: '-100' },
+                        },
+                        'pulse-ring': {
+                            '0%': { transform: 'scale(0.8)', opacity: '0.8' },
+                            '80%, 100%': { transform: 'scale(2)', opacity: '0' },
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(10px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            margin: 0;
-            padding: 40px;
-            background-color: #0f172a; /* Dark Slate */
-            color: #cbd5e1; /* Light Slate Text */
-            font-family: 'Urbanist', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1400px;
-            width: 100%;
-        }
-
-        /* Header Text */
-        .header-text {
-            text-align: center;
-            font-size: 24px;
-            line-height: 1.5;
-            max-width: 1000px;
-            margin: 0 auto 60px auto;
-            color: #f8fafc;
-        }
-
-        /* Timeline Container */
-        .timeline-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-            gap: 20px;
-        }
-
-        /* Individual Step */
-        .step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Icon Circle */
-        .icon-circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #1e293b;
-            border: 2px solid #deff9a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(222, 255, 154, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .step:hover .icon-circle {
-            transform: scale(1.05);
-            background-color: #deff9a;
-        }
-
-        .icon-circle i {
-            font-size: 40px;
-            color: #deff9a;
-            transition: color 0.3s ease;
-        }
-
-        .step:hover .icon-circle i {
-            color: #0f172a;
-        }
-
-        /* Detail Toggle Button */
-        .toggle-btn {
-            background: transparent;
-            border: 1px solid #deff9a;
-            color: #deff9a;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Urbanist', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .toggle-btn:hover {
-            background: rgba(222, 255, 154, 0.1);
-        }
-
-        /* Hidden Details Section */
-        .step-details {
-            display: none; /* Hidden by default */
-            margin-top: 20px;
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            text-align: left;
-            width: 100%;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .step-details h4 {
-            color: #f8fafc;
-            margin: 0 0 10px 0;
-            font-size: 18px;
-        }
-
-        .step-details ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .step-details li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
-            font-size: 16px;
-            color: #cbd5e1;
-            line-height: 1.4;
-        }
-
-        .step-details li::before {
-            content: '•';
-            color: #deff9a;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Connecting Arrows */
-        .arrow-connector {
-            position: absolute;
-            top: 50px; /* Center with circle */
-            left: 50%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #334155 0%, #deff9a 50%, #334155 100%);
-            z-index: 1;
-            display: none; /* Hidden by default, handled by pseudo elements if needed, or simple spacers */
+        .dash-line {
+            stroke-dasharray: 10;
+            animation: dash 3s linear infinite;
         }
         
-        /* Using FontAwesome Chevrons for arrows between steps */
-        .chevron-separator {
-            align-self: flex-start;
-            margin-top: 40px; /* Align with icons */
-            color: #475569;
-            font-size: 24px;
-        }
-
-        /* Text Content */
-        .role-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #f8fafc;
-            margin: 0 0 5px 0;
-        }
-
-        .role-duration {
-            font-size: 18px;
-            color: #deff9a;
-            font-weight: 500;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .role-description {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #94a3b8;
-            padding: 0 10px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .timeline-wrapper {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .chevron-separator {
-                transform: rotate(90deg);
-                align-self: center;
-                margin: 0;
-            }
-        }
-
-        /* --- AI Features Styles --- */
-        .ai-controls {
-            text-align: center;
-            margin-top: 60px;
-            padding-bottom: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .ai-btn {
-            background: linear-gradient(135deg, #deff9a 0%, #a3e635 100%);
-            color: #0f172a;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Urbanist', sans-serif;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(222, 255, 154, 0.2);
-            text-decoration: none;
-        }
-
-        .ai-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(222, 255, 154, 0.4);
-        }
-
-        .ai-btn.secondary {
-            background: transparent;
-            border: 2px solid #334155;
-            color: #94a3b8;
-            box-shadow: none;
-        }
-        .ai-btn.secondary:hover {
-            border-color: #deff9a;
-            color: #deff9a;
-        }
-
-        .ai-btn i { font-size: 20px; }
-
-        .ai-output-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 40px;
-            text-align: left;
-            display: none; /* Hidden by default */
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .ai-output-container h4 {
-            color: #deff9a;
-            margin-top: 0;
-            font-size: 24px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ai-content {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #cbd5e1;
-            white-space: pre-line;
-        }
-
-        .ai-content strong {
-            color: #deff9a;
-        }
-
-        /* Chat Widget */
-        .chat-widget {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 380px;
-            height: 550px;
-            background: #0f172a;
-            border: 1px solid #334155;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 1000;
-            transform: translateY(120%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .chat-widget.open { transform: translateY(0); }
-
-        .chat-header {
-            background: #1e293b;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #334155;
-        }
-
-        .chat-header h4 { margin: 0; color: #f8fafc; font-size: 18px; font-weight: 700; }
-        
-        /* Updated Header Controls */
-        .chat-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .header-btn { 
-            background: none; 
-            border: none; 
-            color: #94a3b8; /* Default grey */
-            cursor: pointer; 
-            font-size: 20px; /* Increased Size */
-            transition: all 0.2s; 
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header-btn:hover { color: #f8fafc; transform: scale(1.1); }
-        
-        /* Info button specifically bright */
-        .header-btn.info-btn { color: #deff9a; } 
-        .header-btn.info-btn:hover { color: #bef264; }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background-color: #0b1120;
-        }
-
-        .message {
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 15px;
-            line-height: 1.5;
-            max-width: 85%;
-            word-wrap: break-word;
-        }
-
-        .user-msg { 
-            background: #334155; 
-            color: #f8fafc; 
-            align-self: flex-end; 
-            border-bottom-right-radius: 2px;
-        }
-
-        .ai-msg { 
-            background: rgba(222, 255, 154, 0.05); 
-            color: #cbd5e1; 
-            align-self: flex-start; 
-            border: 1px solid rgba(222, 255, 154, 0.2);
-            border-bottom-left-radius: 2px;
-        }
-
-        .chat-input-area {
-            padding: 15px;
-            border-top: 1px solid #334155;
-            display: flex;
-            gap: 10px;
-            background: #1e293b;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: #f8fafc;
-            padding: 12px;
-            border-radius: 8px;
-            outline: none;
-            font-family: 'Urbanist', sans-serif;
-        }
-
-        .chat-input:focus { border-color: #deff9a; }
-
-        .send-btn {
-            background: #deff9a;
-            color: #0f172a;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        
-        .send-btn:hover { background: #bef264; }
-
+        /* Loading dots animation */
         .loading-dots:after {
             content: '.';
             animation: dots 1.5s steps(5, end) infinite;
         }
-
         @keyframes dots {
             0%, 20% { content: '.'; }
             40% { content: '..'; }
@@ -438,215 +73,269 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-300 font-urbanist min-h-screen flex flex-col items-center justify-center p-8 md:p-12">
 
-<div class="container">
-    <p class="header-text">
+<div class="w-full max-w-[1400px]">
+    
+    <!-- HEADER -->
+    <p class="text-center text-2xl md:text-3xl leading-relaxed max-w-4xl mx-auto mb-16 text-slate-50">
         Rhea is a leader who speaks the languages of auditing, banking, regulation, and technology.
     </p>
 
-    <div class="timeline-wrapper">
+    <!-- TIMELINE SECTION -->
+    <div class="flex flex-col lg:flex-row justify-between items-start relative gap-10 mb-24">
         
         <!-- Step 1: Auditor -->
-        <div class="step">
-            <div class="icon-circle">
-                <i class="fa-solid fa-magnifying-glass-chart"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
+            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-magnifying-glass-chart text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="role-title">Auditor</h3>
-            <div class="role-duration">8 Years | Deloitte</div>
-            <p class="role-description">
+            <h3 class="text-3xl font-bold text-slate-50 mb-1">Auditor</h3>
+            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">8 Years | Deloitte</div>
+            <p class="text-lg leading-relaxed text-slate-400 px-2">
                 Third line of defense. Mastered the art of making workpapers stand on their own and assessing controls with evidence.
             </p>
             
-            <button class="toggle-btn" onclick="toggleDetails('auditor-details', this)">
+            <button onclick="toggleDetails('auditor-details', this)" class="mt-4 bg-transparent border border-lime-accent text-lime-accent px-4 py-2 rounded-full font-semibold text-sm hover:bg-lime-accent/10 transition-colors flex items-center gap-2">
                 <i class="fa-solid fa-chevron-down"></i> more
             </button>
 
-            <div id="auditor-details" class="step-details">
-                <h4>Auditor / Consultant | Deloitte</h4>
-                <ul>
-                    <li>Conducted full-scope audit activities, including pre-engagement planning, internal controls testing, and audit fieldwork for financial statements and management letters.</li>
-                    <li>Successfully applied Generally Accepted Accounting Principles (GAAP) across engagements in diverse industries, including power utility, trust, publishing, and pipe distribution.</li>
-                    <li>Participated in international and domestic assignments, including a Deloitte exchange program with travel to Yap, Marshall Islands, and Australia, as well as a transition to Deloitte USA to service new clients in Las Vegas, Reno, Colorado, and Los Angeles.</li>
-                    <li><strong>Certification:</strong> CPA (Certified Public Accountant)</li>
+            <div id="auditor-details" class="hidden mt-6 bg-slate-800 p-6 rounded-xl border border-slate-700 text-left w-full animate-fade-in">
+                <h4 class="text-slate-50 text-lg font-bold mb-3">Auditor / Consultant | Deloitte</h4>
+                <ul class="space-y-2">
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Conducted full-scope audit activities, including pre-engagement planning, internal controls testing, and audit fieldwork.</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Successfully applied GAAP across diverse industries including power utility, trust, and publishing.</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Participated in international assignments in Yap, Marshall Islands, and Australia.</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold"><strong class="text-lime-accent">Certification:</strong> CPA (Certified Public Accountant)</li>
                 </ul>
             </div>
         </div>
 
-        <i class="fa-solid fa-chevron-right chevron-separator"></i>
+        <!-- Chevron Separator -->
+        <i class="fa-solid fa-chevron-right text-slate-600 text-2xl mt-12 hidden lg:block"></i>
+        <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 2: Banker -->
-        <div class="step">
-            <div class="icon-circle">
-                <i class="fa-solid fa-vault"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
+            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-vault text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="role-title">Banker</h3>
-            <div class="role-duration">6 Years | Citi</div>
-            <p class="role-description">
-                First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems
+            <h3 class="text-3xl font-bold text-slate-50 mb-1">Banker</h3>
+            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">6 Years | Citi</div>
+            <p class="text-lg leading-relaxed text-slate-400 px-2">
+                First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems.
             </p>
 
-            <button class="toggle-btn" onclick="toggleDetails('banker-details', this)">
+            <button onclick="toggleDetails('banker-details', this)" class="mt-4 bg-transparent border border-lime-accent text-lime-accent px-4 py-2 rounded-full font-semibold text-sm hover:bg-lime-accent/10 transition-colors flex items-center gap-2">
                 <i class="fa-solid fa-chevron-down"></i> more
             </button>
 
-            <div id="banker-details" class="step-details">
-                <h4>Banker | Citi</h4>
-                <ul>
-                    <li><strong>Product Management & Technology Leadership:</strong> Expertise in managing and developing consumer and corporate deposit products and business loans across onshore and offshore markets (Singapore, Asia-Pacific). Served as SME on Eclipse CRM and Sales Station for Retail Bank Deposits. Led the development of functional specifications and user acceptance testing (UAT) for new platform features in the Business Online project, wealth planning, and sales consultation, including recommending a tailored security matrix.</li>
-                    <li><strong>Compliance & Regulatory Expertise:</strong> Critical resource for functional specifications, ensuring platform features and deposit sales processes (e.g., account opening, charging sequence) complied with country-specific rules, including USA Reg C (funds availability) and Reg DD (limits on transfers). Deep experience coordinating complex regulatory projects, including leading OCC reviews for deposits and coordinating multi-country initiatives like the "Rainbow project" across seven Citi countries in Asia.</li>
-                    <li><strong>Financial Control & Audit:</strong> Skilled in managing internal control, General Ledger (GL) reconciliation, and leading audit reviews. Successfully led the migration of GL systems and automated reconciliation processes, reducing a key task time from one hour to 15 minutes.</li>
+            <div id="banker-details" class="hidden mt-6 bg-slate-800 p-6 rounded-xl border border-slate-700 text-left w-full animate-fade-in">
+                <h4 class="text-slate-50 text-lg font-bold mb-3">Banker | Citi</h4>
+                <ul class="space-y-2">
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold"><strong class="text-slate-50">Product Management:</strong> Expertise in managing consumer deposits and business loans across Asia-Pacific markets.</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold"><strong class="text-slate-50">Compliance:</strong> Ensured platform features complied with Reg C, Reg DD, and country-specific rules.</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold"><strong class="text-slate-50">Financial Control:</strong> Led migration of GL systems, reducing reconciliation time from 1 hour to 15 minutes.</li>
                 </ul>
             </div>
         </div>
 
-        <i class="fa-solid fa-chevron-right chevron-separator"></i>
+        <!-- Chevron Separator -->
+        <i class="fa-solid fa-chevron-right text-slate-600 text-2xl mt-12 hidden lg:block"></i>
+        <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 3: Regulator -->
-        <div class="step">
-            <div class="icon-circle">
-                <i class="fa-solid fa-landmark"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
+            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-landmark text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="role-title">Regulator</h3>
-            <div class="role-duration">16+ Years | FDIC & Fed</div>
-            <p class="role-description">
-                Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, operational resilience, cybersecurity and financial stability.
+            <h3 class="text-3xl font-bold text-slate-50 mb-1">Regulator</h3>
+            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">16+ Years | FDIC & Fed</div>
+            <p class="text-lg leading-relaxed text-slate-400 px-2">
+                Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, and operational resilience.
             </p>
 
-            <button class="toggle-btn" onclick="toggleDetails('regulator-details', this)">
+            <button onclick="toggleDetails('regulator-details', this)" class="mt-4 bg-transparent border border-lime-accent text-lime-accent px-4 py-2 rounded-full font-semibold text-sm hover:bg-lime-accent/10 transition-colors flex items-center gap-2">
                 <i class="fa-solid fa-chevron-down"></i> more
             </button>
 
-            <div id="regulator-details" class="step-details">
-                <h4>Regulator | Experience Details</h4>
+            <div id="regulator-details" class="hidden mt-6 bg-slate-800 p-6 rounded-xl border border-slate-700 text-left w-full animate-fade-in">
+                <h4 class="text-slate-50 text-lg font-bold mb-3">Regulator | Experience Details</h4>
                 
-                <div style="margin-bottom: 8px;">
-                    <strong style="color: #deff9a;">Board of Governors, Senior Cybersecurity Policy Analyst</strong>
-                </div>
-                <ul>
-                    <li>Shaped domestic and international cybersecurity and operational resilience policies, with a specialized focus on emerging technologies (e.g., AI, Quantum Computing, Blockchain) and managing third-party risk.</li>
+                <div class="mb-2 mt-4"><strong class="text-lime-accent">Board of Governors, Senior Cybersecurity Policy Analyst</strong></div>
+                <ul class="space-y-1 mb-4">
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Shaped domestic and international cybersecurity and operational resilience policies (AI, Quantum, Blockchain).</li>
                 </ul>
 
-                <div style="margin-bottom: 8px; margin-top: 15px;">
-                    <strong style="color: #deff9a;">Dallas FRB, Safety and Soundness, and IT Commissioned Examiner</strong>
-                </div>
-                <ul>
-                    <li>Developed and delivered specialized internal training curricula concerning emerging technologies, including blockchain and crypto-assets.</li>
-                    <li>Led critical, specialized IT examinations for key Financial Market Infrastructures (FMIs) and Technology Service Providers (TSPs).</li>
-                    <li>Directed operational risk validation for financial institutions operating under enforcement actions.</li>
+                <div class="mb-2"><strong class="text-lime-accent">Dallas FRB, Commissioned Examiner</strong></div>
+                <ul class="space-y-1 mb-4">
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Developed training on emerging technologies (blockchain, crypto).</li>
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Led critical IT exams for Financial Market Infrastructures (FMIs).</li>
                 </ul>
 
-                <div style="margin-bottom: 8px; margin-top: 15px;">
-                    <strong style="color: #deff9a;">FDIC, Financial Institution Accountant (Bank Failure Resolution Support)</strong>
-                </div>
-                <ul>
-                    <li>Served as a core member of the pro-forma team during bank failure resolutions.</li>
-                    <li>Quickly prepared opening balance sheets for acquiring institutions, offering direct insight into systemic issues that prompted financial failure and regulatory intervention.</li>
-                </ul>
-
-                <div style="margin-bottom: 8px; margin-top: 15px;">
-                    <strong style="color: #deff9a;">Certifications</strong>
-                </div>
-                <ul>
-                    <li>Certified Anti-Money Laundering Specialist (ACAMS)</li>
+                <div class="mb-2"><strong class="text-lime-accent">Certifications</strong></div>
+                <ul class="space-y-1">
+                    <li class="pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-lime-accent before:font-bold">Certified Anti-Money Laundering Specialist (ACAMS)</li>
                 </ul>
             </div>
         </div>
 
-        <i class="fa-solid fa-chevron-right chevron-separator"></i>
+        <!-- Chevron Separator -->
+        <i class="fa-solid fa-chevron-right text-slate-600 text-2xl mt-12 hidden lg:block"></i>
+        <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 4: Technologist -->
-        <div class="step">
-            <div class="icon-circle">
-                <i class="fa-solid fa-microchip"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
+            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-microchip text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="role-title">Technologist</h3>
-            <div class="role-duration">Lifelong Learner</div>
-            <p class="role-description">
+            <h3 class="text-3xl font-bold text-slate-50 mb-1">Technologist</h3>
+            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">Lifelong Learner</div>
+            <p class="text-lg leading-relaxed text-slate-400 px-2">
                 A self-starter who relentlessly upskills to understand and counter emerging threats.
             </p>
 
-            <button class="toggle-btn" onclick="toggleDetails('technologist-details', this)">
+            <button onclick="toggleDetails('technologist-details', this)" class="mt-4 bg-transparent border border-lime-accent text-lime-accent px-4 py-2 rounded-full font-semibold text-sm hover:bg-lime-accent/10 transition-colors flex items-center gap-2">
                 <i class="fa-solid fa-chevron-down"></i> more
             </button>
 
-            <div id="technologist-details" class="step-details">
-                <h4>Technologist | Skills & Certifications</h4>
+            <div id="technologist-details" class="hidden mt-6 bg-slate-800 p-6 rounded-xl border border-slate-700 text-left w-full animate-fade-in">
+                <h4 class="text-slate-50 text-lg font-bold mb-3">Technologist | Skills & Certifications</h4>
                 
-                <div style="margin-bottom: 8px;">
-                    <strong style="color: #deff9a;">Cybersecurity</strong>
-                </div>
-                <ul>
-                    <li><strong>GCIH:</strong> Certified Incident Handler</li>
-                    <li><strong>CISA:</strong> Certified Information Systems Auditor</li>
-                    <li><strong>CCZT:</strong> Certificate of Competence in Zero Trust</li>
-                    <li><strong>GFACT:</strong> GIAC Foundational Cybersecurity Technologies</li>
-                    <li><strong>GSTRT:</strong> Strategic Planning, Policy and Leadership</li>
+                <div class="mb-2"><strong class="text-lime-accent">Cybersecurity</strong></div>
+                <ul class="space-y-1 mb-4">
+                    <li class="pl-5 text-sm"><strong>GCIH:</strong> Certified Incident Handler</li>
+                    <li class="pl-5 text-sm"><strong>CISA:</strong> Certified Information Systems Auditor</li>
+                    <li class="pl-5 text-sm"><strong>CCZT:</strong> Certificate of Competence in Zero Trust</li>
+                    <li class="pl-5 text-sm"><strong>GSTRT:</strong> Strategic Planning, Policy and Leadership</li>
                 </ul>
 
-                <div style="margin-bottom: 8px; margin-top: 15px;">
-                    <strong style="color: #deff9a;">Cloud</strong>
-                </div>
-                <ul>
-                    <li><strong>AWS:</strong> Certified Cloud Practitioner</li>
-                    <li><strong>Google Cloud:</strong> Digital Leader</li>
-                    <li><strong>Azure:</strong> AI & Data Fundamentals</li>
-                    <li><strong>GCLD:</strong> Cloud Security Essentials</li>
-                    <li><strong>CCSK:</strong> Certified Cloud Security Knowledge</li>
+                <div class="mb-2"><strong class="text-lime-accent">Cloud</strong></div>
+                <ul class="space-y-1 mb-4">
+                    <li class="pl-5 text-sm"><strong>AWS:</strong> Certified Cloud Practitioner</li>
+                    <li class="pl-5 text-sm"><strong>Google:</strong> Cloud Digital Leader</li>
+                    <li class="pl-5 text-sm"><strong>Azure:</strong> AI & Data Fundamentals</li>
+                    <li class="pl-5 text-sm"><strong>CCSK:</strong> Certified Cloud Security Knowledge</li>
                 </ul>
 
-                <div style="margin-bottom: 8px; margin-top: 15px;">
-                    <strong style="color: #deff9a;">Emerging Tech</strong>
-                </div>
-                <ul>
-                    <li>Professional development courses on AI, Quantum, Blockchain, Smart Contract through SANS Technology Institute, MIT and University of Texas at Austin</li>
-                    <li>Subject Matter Expert (SME) for ISACA CISA test bank.</li>
+                <div class="mb-2"><strong class="text-lime-accent">Emerging Tech</strong></div>
+                <ul class="space-y-1">
+                    <li class="pl-5 text-sm">Professional development in AI, Quantum, Blockchain (MIT, UT Austin, SANS).</li>
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <!-- AI Features Interface (Moved inside container) -->
-    <div class="ai-controls">
-        <button class="ai-btn" onclick="revealAnalysis()">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Analyze Career Path
+    <!-- GLOBAL CONSENSUS SECTION -->
+    <div class="mb-20 text-center">
+        <h2 class="text-4xl text-slate-50 mb-10 relative inline-block after:content-[''] after:block after:w-3/5 after:h-1 after:bg-lime-accent after:mx-auto after:mt-3 after:rounded-sm">
+            Building Consensus on the Global Stage
+        </h2>
+        
+        <!-- Interactive Map SVG -->
+        <div class="w-full max-w-[1000px] h-[300px] md:h-[400px] mx-auto mb-10 relative">
+            <svg viewBox="0 0 1000 450" class="w-full h-full drop-shadow-sm" preserveAspectRatio="xMidYMid meet">
+                <g fill="none" stroke="#334155" stroke-width="1.5">
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M150,120 Q120,80 180,60 T250,80 T300,150 T220,200 T180,250 T140,200 Z" stroke="none"/>
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M250,230 Q280,250 300,300 T280,400 T220,350 T200,280 Z" stroke="none"/>
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M450,100 Q480,80 520,90 T550,140 T500,160 T460,140 Z" stroke="none"/>
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M450,180 Q480,170 530,180 T550,250 T520,350 T450,300 T420,220 Z" stroke="none"/>
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M580,100 Q650,80 750,100 T850,150 T800,250 T700,280 T600,220 Z" stroke="none"/>
+                    <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M750,300 Q800,290 850,320 T820,380 T740,360 Z" stroke="none"/>
+                    <path d="M100,80 L350,80 M150,150 L300,250 M450,100 L600,100 M750,300 L850,350" stroke="#334155" stroke-width="0.5" opacity="0.5"/>
+                </g>
+                <!-- Arcs -->
+                <path d="M220,160 Q360,60 500,130" fill="none" stroke="#deff9a" stroke-width="2" class="dash-line opacity-60"/>
+                <path d="M500,130 Q650,150 800,330" fill="none" stroke="#deff9a" stroke-width="2" class="dash-line opacity-60"/>
+                <!-- Markers -->
+                <g>
+                    <circle cx="220" cy="160" r="8" fill="#0f172a" stroke="#deff9a" stroke-width="2"/>
+                    <circle cx="220" cy="160" r="4" fill="#deff9a"/>
+                    <circle cx="220" cy="160" r="12" stroke="#deff9a" stroke-width="1" fill="none" class="animate-[pulse-ring_2s_infinite]"/>
+                </g>
+                <g>
+                    <circle cx="500" cy="130" r="8" fill="#0f172a" stroke="#deff9a" stroke-width="2"/>
+                    <circle cx="500" cy="130" r="4" fill="#deff9a"/>
+                    <circle cx="500" cy="130" r="12" stroke="#deff9a" stroke-width="1" fill="none" class="animate-[pulse-ring_2s_infinite]"/>
+                </g>
+                <g>
+                    <circle cx="800" cy="330" r="8" fill="#0f172a" stroke="#deff9a" stroke-width="2"/>
+                    <circle cx="800" cy="330" r="4" fill="#deff9a"/>
+                    <circle cx="800" cy="330" r="12" stroke="#deff9a" stroke-width="1" fill="none" class="animate-[pulse-ring_2s_infinite]"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Global Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-left items-stretch">
+            
+            <div class="px-5 border-b md:border-b-0 md:border-r border-slate-700/50 pb-8 md:pb-0 last:border-0">
+                <div class="text-3xl text-lime-accent mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+                <h4 class="text-lime-accent text-xl font-bold mb-3">G7 Cyber Experts Group (CEG)</h4>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Coordinated activities for the Emerging Technology workstream.
+                </p>
+            </div>
+
+            <div class="px-5 border-b md:border-b-0 md:border-r border-slate-700/50 pb-8 md:pb-0 last:border-0">
+                <div class="text-3xl text-lime-accent mb-4"><i class="fa-solid fa-building-columns"></i></div>
+                <h4 class="text-lime-accent text-xl font-bold mb-3">
+                    Basel Committee (BCBS)<br>
+                    Operational Resilience Group
+                </h4>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Served as SME, analyzing global practices in Information and Communication Technology (ICT) risk management.
+                </p>
+            </div>
+
+            <div class="px-5 pb-8 md:pb-0">
+                <div class="text-3xl text-lime-accent mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4 class="text-lime-accent text-xl font-bold mb-3">International Association of Insurance Supervisors (IAIS) Operational Risk Task Force</h4>
+                <p class="text-slate-300 text-lg leading-relaxed">
+                    Performed a "stocktake" of cybersecurity regulations against Insurance Core Principles. Work was adopted as a template for other members.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- AI Features Interface -->
+    <div class="text-center mt-16 mb-10 flex justify-center gap-5 flex-wrap">
+        <button onclick="revealAnalysis()" class="bg-gradient-to-br from-lime-accent to-lime-hover text-slate-900 border-none px-8 py-4 text-lg font-bold rounded-full cursor-pointer shadow-[0_4px_15px_rgba(222,255,154,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(222,255,154,0.4)] transition-all flex items-center gap-3">
+            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i> Analyze Career Path
         </button>
-        <button class="ai-btn secondary" onclick="toggleChat()">
-            <i class="fa-solid fa-comments"></i> Chat with Digital Twin
+        <button onclick="toggleChat()" class="bg-transparent border-2 border-slate-700 text-slate-400 px-8 py-4 text-lg font-bold rounded-full cursor-pointer hover:border-lime-accent hover:text-lime-accent transition-colors flex items-center gap-3">
+            <i class="fa-solid fa-comments text-xl"></i> Chat with Digital Twin
         </button>
     </div>
 
-    <div class="ai-output-container" id="analysisResult">
-        <h4><i class="fa-solid fa-chart-line"></i> Career Analysis</h4>
-        <div class="ai-content" id="analysisContent">
-            
-        </div>
+    <div id="analysisResult" class="hidden max-w-4xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-10 text-left animate-fade-in">
+        <h4 class="text-lime-accent text-2xl font-bold mb-5 flex items-center gap-3">
+            <i class="fa-solid fa-chart-line"></i> Career Analysis
+        </h4>
+        <div id="analysisContent" class="text-lg leading-relaxed text-slate-300 whitespace-pre-line"></div>
     </div>
 
 </div>
 
 <!-- Chat Widget -->
-<div class="chat-widget" id="chatWidget">
-    <div class="chat-header">
-        <h4><i class="fa-solid fa-user-astronaut"></i> Rhea's Digital Twin</h4>
-        <div class="chat-controls">
-            <button class="header-btn info-btn" onclick="showChatInfo()" title="About this simulation">
-                <i class="fa-solid fa-circle-info"></i>
-            </button>
-            <button class="header-btn" onclick="toggleChat()" title="Close chat">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+<div id="chatWidget" class="fixed bottom-8 right-8 w-[380px] h-[550px] bg-slate-900 border border-slate-700 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden z-50 translate-y-[120%] transition-transform duration-300">
+    <div class="bg-slate-800 p-5 flex justify-between items-center border-b border-slate-700">
+        <h4 class="m-0 text-slate-50 text-lg font-bold flex items-center gap-2"><i class="fa-solid fa-user-astronaut"></i> Rhea's Digital Twin</h4>
+        <div class="flex gap-3 items-center">
+            <button onclick="showChatInfo()" class="bg-none border-none text-lime-accent cursor-pointer text-xl hover:text-lime-hover transition-transform hover:scale-110" title="About this simulation"><i class="fa-solid fa-circle-info"></i></button>
+            <button onclick="toggleChat()" class="bg-none border-none text-slate-400 cursor-pointer text-xl hover:text-slate-50 transition-transform hover:scale-110" title="Close chat"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
-    <div class="chat-messages" id="chatMessages">
-        <div class="message ai-msg">
+    <div id="chatMessages" class="flex-1 p-5 overflow-y-auto flex flex-col gap-4 bg-slate-950">
+        <div class="p-3 rounded-xl text-sm leading-relaxed max-w-[85%] break-words bg-lime-accent/5 text-slate-300 self-start border border-lime-accent/20 rounded-bl-sm">
             Hello! I can answer questions about her experience or skills. This is for DEMO purposes only.
         </div>
     </div>
-    <div class="chat-input-area">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." onkeypress="handleEnter(event)">
-        <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    <div class="p-4 border-t border-slate-700 flex gap-2 bg-slate-800">
+        <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleEnter(event)" class="flex-1 bg-slate-900 border border-slate-700 text-slate-50 p-3 rounded-lg outline-none font-urbanist focus:border-lime-accent">
+        <button onclick="sendMessage()" class="bg-lime-accent text-slate-900 border-none w-11 h-11 rounded-lg cursor-pointer flex items-center justify-center hover:bg-lime-hover transition-colors"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
 </div>
 
@@ -655,16 +344,17 @@
     function revealAnalysis() {
         const container = document.getElementById('analysisResult');
         const contentDiv = document.getElementById('analysisContent');
-        container.style.display = 'block';
+        container.style.display = 'block'; // Tailwind doesn't have a direct 'display: block' toggle class utility without adding 'hidden' logic, so we keep standard JS for toggling visibility or remove 'hidden' class
+        container.classList.remove('hidden');
         
         // This content is pre-generated so it works for recruiters without an API key
         contentDiv.innerHTML = `
-        <strong>Value Proposition</strong><br>
-        Rhea sits at the rare intersection of <strong>Regulatory Authority</strong> and <strong>Technical Reality</strong>. Most professionals are either "Policy Architects" who lack technical depth or "Technologists" who lack regulatory context. Rhea is a <strong>Strategic Synthesizer</strong>—she can audit the code (Technologist), assess the control environment (Auditor), understand the business pressure (Banker), and uphold the safety and soundness standard (Regulator). This allows her to identify systemic risks in emerging tech (AI, Quantum) that single-domain experts miss.<br><br>
-        <strong>Strategic Future Trajectories:</strong>
-        <ul>
-        <li><strong>AI Assurance:</strong> Bridging the gap between data science teams and regulatory compliance to operationalize AI governance.</li>
-        <li><strong>Financial Stability Innovation:</strong> Leading a division dedicated to stress-testing financial systems against next-generation cyber and quantum threats.</li>
+        <strong class="text-lime-accent">Value Proposition</strong><br>
+        Rhea sits at the rare intersection of <strong class="text-white">Regulatory Authority</strong> and <strong class="text-white">Technical Reality</strong>. Most professionals are either "Policy Architects" who lack technical depth or "Technologists" who lack regulatory context. Rhea is a <strong class="text-white">Strategic Synthesizer</strong>—she can test the code (Technologist), assess the control environment (Auditor), understand the business pressure (Banker), and uphold the safety and soundness standard (Regulator). This allows her to identify systemic risks in emerging tech (AI, Quantum) that single-domain experts miss.<br><br>
+        <strong class="text-lime-accent">Strategic Future Trajectories:</strong>
+        <ul class="list-disc pl-5 mt-2">
+        <li><strong class="text-white">AI Assurance:</strong> Bridging the gap between data science teams and regulatory compliance to operationalize AI governance.</li>
+        <li><strong class="text-white">Financial Stability Innovation:</strong> Leading a group dedicated to stress-testing financial systems against next-generation cyber and quantum threats.</li>
         </ul>
         `;
 
@@ -682,29 +372,30 @@
     // Toggle Details Function
     function toggleDetails(id, btn) {
         const details = document.getElementById(id);
-        const icon = btn.querySelector('i');
         
-        if (details.style.display === 'block') {
-            details.style.display = 'none';
-            btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i> more';
-            btn.style.background = 'transparent';
-            btn.style.color = '#deff9a';
-        } else {
-            details.style.display = 'block';
+        if (details.classList.contains('hidden')) {
+            details.classList.remove('hidden');
             btn.innerHTML = '<i class="fa-solid fa-chevron-up"></i> less';
-            btn.style.background = '#deff9a';
-            btn.style.color = '#0f172a';
+            btn.classList.add('bg-lime-accent', 'text-slate-900');
+            btn.classList.remove('bg-transparent', 'text-lime-accent');
+        } else {
+            details.classList.add('hidden');
+            btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i> more';
+            btn.classList.remove('bg-lime-accent', 'text-slate-900');
+            btn.classList.add('bg-transparent', 'text-lime-accent');
         }
     }
 
     function toggleChat() {
         const widget = document.getElementById('chatWidget');
-        isChatOpen = !isChatOpen;
-        if (isChatOpen) {
-            widget.classList.add('open');
+        // Toggle the translate classes to slide in/out
+        if (widget.classList.contains('translate-y-[120%]')) {
+            widget.classList.remove('translate-y-[120%]');
+            widget.classList.add('translate-y-0');
             document.getElementById('chatInput').focus();
         } else {
-            widget.classList.remove('open');
+            widget.classList.add('translate-y-[120%]');
+            widget.classList.remove('translate-y-0');
         }
     }
 
@@ -714,8 +405,19 @@
 
     function appendMessage(text, sender) {
         const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${sender}-msg`;
+        
+        // Base classes
+        let classes = "p-3 rounded-xl text-sm leading-relaxed max-w-[85%] break-words";
+        
+        if (sender === 'user') {
+            classes += " bg-slate-700 text-slate-50 self-end rounded-br-sm";
+        } else {
+            classes += " bg-lime-accent/5 text-slate-300 self-start border border-lime-accent/20 rounded-bl-sm";
+        }
+        
+        msgDiv.className = classes;
         msgDiv.innerText = text;
+        
         const messagesContainer = document.getElementById('chatMessages');
         messagesContainer.appendChild(msgDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -733,7 +435,7 @@
         // Simulate thinking time
         const loadingId = 'loading-' + Date.now();
         const loadingDiv = document.createElement('div');
-        loadingDiv.className = 'message ai-msg loading-dots';
+        loadingDiv.className = 'p-3 rounded-xl text-sm leading-relaxed max-w-[85%] bg-lime-accent/5 text-slate-300 self-start border border-lime-accent/20 rounded-bl-sm loading-dots';
         loadingDiv.id = loadingId;
         loadingDiv.innerText = 'Thinking';
         document.getElementById('chatMessages').appendChild(loadingDiv);
@@ -771,7 +473,7 @@
         
         // Banker / Citi
         if (input.includes('bank') || input.includes('citi') || input.includes('product') || input.includes('payment')) {
-            return "At Citi (6 years), Rhea managed the full product life cycle for retail bank deposits. She worked on the a large scale conversion project across 7 countries and automated GL reconciliation time from 1 hour to 15 minutes.";
+            return "At Citi (6 years), Rhea managed the full product life cycle for retail bank deposits. She worked on a large scale system conversion across 7 countries and automated GL reconciliation time from 1 hour to 15 minutes.";
         }
 
         // Regulator / Fed / FDIC

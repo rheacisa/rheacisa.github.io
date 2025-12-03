@@ -749,6 +749,21 @@
     function getBotResponse(input) {
         // Safety First: content is hardcoded, so no external AI can inject vulgarity.
         
+        // JOKES
+        if (input.includes('joke') || input.includes('funny') || input.includes('laugh')) {
+            const jokes = [
+                "Why did the web developer quit his job? Because he didn't get arrays.",
+                "There are 10 types of people in the world: those who understand binary, and those who don't.",
+                "What do you call a fake noodle? An impasta. (The network security kind!)",
+                "What's a hacker's favorite song? 'I Wanna Hold Your Handshake.'",
+                "Why was the computer cold? Because it left its Windows open.",
+                "Why do programmers prefer dark mode? Because light attracts bugs.",
+                "What is a computer's favorite snack? Microchips.",
+                "Why was the Wi-Fi signal weak? Because it had separation anxiety."
+            ];
+            return jokes[Math.floor(Math.random() * jokes.length)];
+        }
+
         // Auditor / Deloitte
         if (input.includes('audit') || input.includes('deloitte') || input.includes('accounting') || input.includes('cpa')) {
             return "At Deloitte (8 years), Rhea audited financial institutions and government agencies. She has her CPA and conducted full-scope audit activities including internal controls testing and GL reconciliation.";
@@ -756,22 +771,22 @@
         
         // Banker / Citi
         if (input.includes('bank') || input.includes('citi') || input.includes('product') || input.includes('payment')) {
-            return "At Citi (6 years), Rhea managed the full product life cycle for deposits and business loans. She worked on the 'Rainbow project' across 7 countries and reduced GL reconciliation time from 1 hour to 15 minutes.";
+            return "At Citi (6 years), Rhea managed the full product life cycle for retail bank deposits. She worked on the a large scale conversion project across 7 countries and automated GL reconciliation time from 1 hour to 15 minutes.";
         }
 
         // Regulator / Fed / FDIC
         if (input.includes('regulat') || input.includes('fed') || input.includes('fdic') || input.includes('policy') || input.includes('board') || input.includes('dallas')) {
-            return "Rhea has 16+ years of regulatory experience at the FDIC and Federal Reserve (Dallas & Board). She shaped G7 cyber policy, led IT examinations for FMIs, and handled bank failure resolutions.";
+            return "Rhea has multiple years of regulatory experience. She shaped cyber and operational resilience policy, led safety and soundness and IT examinations for Banks, Holding Companies, Financial Market Utilities, technology service providers, and handled bank failure resolutions.";
         }
 
         // Tech / Certifications
         if (input.includes('tech') || input.includes('cyber') || input.includes('cloud') || input.includes('ai') || input.includes('cert') || input.includes('quantum')) {
-            return "Rhea is a lifelong technologist. She holds certifications like GCIH, CISA, CCZT, CCSK, AWS Cloud Practitioner, and Azure AI. She is actively studying Quantum Computing and Blockchain.";
+            return "Rhea is a lifelong technologist. She holds certifications like GCIH, CISA, CCZT, CCSK, AWS Cloud Practitioner, Google Cloud Digital Leader, and Azure AI. She is proficient in multiple emerging technologies AI quantum and blockchain.";
         }
 
         // Contact
         if (input.includes('contact') || input.includes('email') || input.includes('hire') || input.includes('resume')) {
-            return "You can reach Rhea at rhea.nygard@frb.gov or connect via LinkedIn.";
+            return "You can connect with Rhea via LinkedIn.";
         }
 
         // Greeting

@@ -114,7 +114,7 @@ This portfolio is a personal project. Feel free to draw inspiration, but please 
 
 ## 🤝 Connect
 
-- 💼 [LinkedIn](https://linkedin.com/in/rheacisa)
+- 💼 [LinkedIn]
 - 🌐 [Portfolio Site](https://rheacisa.github.io/)
 
 ---

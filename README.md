@@ -20,6 +20,24 @@ This site tells the story of a professional journey that bridges four critical w
 🎭 **Problem/Solution Narrative**: Interactive exploration of emerging risks and strategic positioning  
 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile viewing  
 
+## 🔒 Security Features
+
+As a cybersecurity professional, this portfolio demonstrates secure development practices:
+
+🛡️ **Hardcoded Chatbot Responses**: The digital twin uses keyword-matching logic with pre-defined responses—no LLM API calls, preventing prompt injection attacks and ensuring all content is strictly controlled and safe.
+
+🚫 **No External API Keys**: Zero dependency on third-party AI services eliminates API key exposure risks and data leakage concerns.
+
+⚡ **Client-Side Only Processing**: All interactive features run in the browser without backend servers, reducing attack surface.
+
+🔐 **Content Security**: No user data is collected, stored, or transmitted. The chatbot simulation is entirely local and stateless.
+
+📋 **Static Site Architecture**: Hosted on GitHub Pages with no database or server-side processing, minimizing common web vulnerabilities (SQL injection, XSS, CSRF).
+
+✅ **Input Validation**: Chat input is sanitized and responses are controlled through predefined logic, preventing malicious content injection.
+
+💡 **Privacy by Design**: No cookies, no analytics tracking, no third-party scripts (except CDN resources for fonts and icons from trusted providers).
+
 ## 🛠️ Tech Stack
 
 This portfolio is built with:

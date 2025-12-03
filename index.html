@@ -35,6 +35,7 @@
                         'dash': 'dash 3s linear infinite',
                         'pulse-ring': 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite',
                         'fade-in': 'fadeIn 0.5s ease forwards',
+                        'zoom-in': 'zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
                         dash: {
@@ -47,6 +48,10 @@
                         fadeIn: {
                             'from': { opacity: '0', transform: 'translateY(10px)' },
                             'to': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        zoomIn: {
+                            'from': { opacity: '0', transform: 'scale(0.95)' },
+                            'to': { opacity: '1', transform: 'scale(1)' },
                         }
                     }
                 }
@@ -73,12 +78,13 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300 font-urbanist min-h-screen flex flex-col items-center justify-center p-8 md:p-12">
+<!-- Adjusted padding: p-4 on mobile, p-12 on desktop for better screen usage -->
+<body class="bg-slate-900 text-slate-300 font-urbanist min-h-screen flex flex-col items-center justify-center p-4 md:p-12">
 
 <div class="w-full max-w-[1400px]">
     
     <!-- HEADER -->
-    <p class="text-center text-2xl md:text-3xl leading-relaxed max-w-4xl mx-auto mb-16 text-slate-50">
+    <p class="text-center text-xl md:text-3xl leading-relaxed max-w-4xl mx-auto mb-10 md:mb-16 text-slate-50">
         Rhea is a leader who speaks the languages of auditing, banking, regulation, and technology.
     </p>
 
@@ -86,13 +92,13 @@
     <div class="flex flex-col lg:flex-row justify-between items-start relative gap-10 mb-24">
         
         <!-- Step 1: Auditor -->
-        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
-            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
-                <i class="fa-solid fa-magnifying-glass-chart text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group w-full">
+            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-magnifying-glass-chart text-3xl md:text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="text-3xl font-bold text-slate-50 mb-1">Auditor</h3>
-            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">8 Years | Deloitte</div>
-            <p class="text-lg leading-relaxed text-slate-400 px-2">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-50 mb-1">Auditor</h3>
+            <div class="text-base md:text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">8 Years | Deloitte</div>
+            <p class="text-base md:text-lg leading-relaxed text-slate-400 px-2">
                 Third line of defense. Mastered the art of making workpapers stand on their own and assessing controls with evidence.
             </p>
             
@@ -116,13 +122,13 @@
         <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 2: Banker -->
-        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
-            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
-                <i class="fa-solid fa-vault text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group w-full">
+            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-vault text-3xl md:text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="text-3xl font-bold text-slate-50 mb-1">Banker</h3>
-            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">6 Years | Citi</div>
-            <p class="text-lg leading-relaxed text-slate-400 px-2">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-50 mb-1">Banker</h3>
+            <div class="text-base md:text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">6 Years | Citi</div>
+            <p class="text-base md:text-lg leading-relaxed text-slate-400 px-2">
                 First and second line of defense. Understands business pressures, intersection of technology and compliance, and end-to-end payment systems.
             </p>
 
@@ -145,14 +151,14 @@
         <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 3: Regulator -->
-        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
-            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
-                <i class="fa-solid fa-landmark text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group w-full">
+            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-landmark text-3xl md:text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="text-3xl font-bold text-slate-50 mb-1">Regulator</h3>
-            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">16+ Years | FDIC & Fed</div>
-            <p class="text-lg leading-relaxed text-slate-400 px-2">
-                Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, and operational resilience.
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-50 mb-1">Regulator</h3>
+            <div class="text-base md:text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">16+ Years | FDIC & FRB</div>
+            <p class="text-base md:text-lg leading-relaxed text-slate-400 px-2">
+                Fourth line of defense. Deep experience with troubled institutions, enforcement actions, interagency policy, third-party risk management, and operational resilience.
             </p>
 
             <button onclick="toggleDetails('regulator-details', this)" class="mt-4 bg-transparent border border-lime-accent text-lime-accent px-4 py-2 rounded-full font-semibold text-sm hover:bg-lime-accent/10 transition-colors flex items-center gap-2">
@@ -185,13 +191,13 @@
         <i class="fa-solid fa-chevron-down text-slate-600 text-2xl my-4 lg:hidden"></i>
 
         <!-- Step 4: Technologist -->
-        <div class="flex flex-col items-center text-center flex-1 relative z-10 group">
-            <div class="w-28 h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
-                <i class="fa-solid fa-microchip text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
+        <div class="flex flex-col items-center text-center flex-1 relative z-10 group w-full">
+            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-slate-800 border-2 border-lime-accent flex justify-center items-center mb-6 shadow-[0_0_15px_rgba(222,255,154,0.2)] transition-transform duration-300 group-hover:scale-105 group-hover:bg-lime-accent">
+                <i class="fa-solid fa-microchip text-3xl md:text-4xl text-lime-accent transition-colors duration-300 group-hover:text-slate-900"></i>
             </div>
-            <h3 class="text-3xl font-bold text-slate-50 mb-1">Technologist</h3>
-            <div class="text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">Lifelong Learner</div>
-            <p class="text-lg leading-relaxed text-slate-400 px-2">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-50 mb-1">Technologist</h3>
+            <div class="text-base md:text-lg text-lime-accent font-medium mb-4 tracking-wide uppercase">Lifelong Learner</div>
+            <p class="text-base md:text-lg leading-relaxed text-slate-400 px-2">
                 A self-starter who relentlessly upskills to understand and counter emerging threats.
             </p>
 
@@ -229,12 +235,12 @@
 
     <!-- GLOBAL CONSENSUS SECTION -->
     <div class="mb-20 text-center">
-        <h2 class="text-4xl text-slate-50 mb-10 relative inline-block after:content-[''] after:block after:w-3/5 after:h-1 after:bg-lime-accent after:mx-auto after:mt-3 after:rounded-sm">
+        <h2 class="text-2xl md:text-4xl text-slate-50 mb-10 relative inline-block after:content-[''] after:block after:w-3/5 after:h-1 after:bg-lime-accent after:mx-auto after:mt-3 after:rounded-sm">
             Building Consensus on the Global Stage
         </h2>
         
         <!-- Interactive Map SVG -->
-        <div class="w-full max-w-[1000px] h-[300px] md:h-[400px] mx-auto mb-10 relative">
+        <div class="w-full max-w-[1000px] h-[250px] md:h-[400px] mx-auto mb-10 relative">
             <svg viewBox="0 0 1000 450" class="w-full h-full drop-shadow-sm" preserveAspectRatio="xMidYMid meet">
                 <g fill="none" stroke="#334155" stroke-width="1.5">
                     <path class="fill-slate-800 hover:fill-slate-700 transition-colors duration-300" d="M150,120 Q120,80 180,60 T250,80 T300,150 T220,200 T180,250 T140,200 Z" stroke="none"/>
@@ -301,7 +307,7 @@
     </div>
 
     <!-- AI Features Interface -->
-    <div class="text-center mt-16 mb-10 flex justify-center gap-5 flex-wrap">
+    <div class="text-center mt-16 mb-6 flex justify-center gap-5 flex-wrap">
         <button onclick="revealAnalysis()" class="bg-gradient-to-br from-lime-accent to-lime-hover text-slate-900 border-none px-8 py-4 text-lg font-bold rounded-full cursor-pointer shadow-[0_4px_15px_rgba(222,255,154,0.2)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(222,255,154,0.4)] transition-all flex items-center gap-3">
             <i class="fa-solid fa-wand-magic-sparkles text-xl"></i> Analyze Career Path
         </button>
@@ -310,13 +316,148 @@
         </button>
     </div>
 
-    <div id="analysisResult" class="hidden max-w-4xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-10 text-left animate-fade-in">
+    <!-- PROBLEM / SOLUTION CONTROLS -->
+    <div class="text-center mb-10 flex flex-wrap justify-center gap-5">
+        <button onclick="revealSection('problemSection')" class="bg-slate-800 border-2 border-red-500/50 text-red-100 px-6 py-3 text-lg font-bold rounded-full cursor-pointer hover:border-red-500 hover:text-red-400 transition-colors flex items-center gap-3">
+            <i class="fa-solid fa-triangle-exclamation"></i> The Challenge
+        </button>
+        <button onclick="revealSection('solutionSection')" class="bg-slate-800 border-2 border-lime-accent/50 text-lime-accent px-6 py-3 text-lg font-bold rounded-full cursor-pointer hover:border-lime-accent hover:text-lime-hover transition-colors flex items-center gap-3">
+            <i class="fa-solid fa-layer-group"></i> The Synthesis
+        </button>
+    </div>
+
+    <!-- CAREER ANALYSIS RESULTS -->
+    <div id="analysisResult" class="hidden max-w-4xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-10 text-left animate-fade-in mb-10">
         <h4 class="text-lime-accent text-2xl font-bold mb-5 flex items-center gap-3">
             <i class="fa-solid fa-chart-line"></i> Career Analysis
         </h4>
         <div id="analysisContent" class="text-lg leading-relaxed text-slate-300 whitespace-pre-line"></div>
     </div>
 
+    <!-- PROBLEM SECTION (HIDDEN) -->
+    <div id="problemSection" class="hidden max-w-5xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-10 text-left animate-fade-in mb-10">
+        <h4 class="text-red-400 text-2xl md:text-3xl font-bold mb-2 uppercase tracking-wide">A New Class of Risk Demands a New Breed of Expert</h4>
+        <p class="text-slate-300 text-lg mb-10">The financial system faces novel, systemic risks from the rapid convergence of three powerful forces:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700 hover:border-red-500/30 transition-colors">
+                <i class="fa-solid fa-shield-virus text-4xl text-red-400 mb-4"></i>
+                <h5 class="text-slate-50 font-bold text-lg mb-3 uppercase">Pervasive Cyber Vulnerabilities</h5>
+                <p class="text-slate-400 text-sm leading-relaxed">An ever-increasing attack surface and the threat of sophisticated state and non-state actors exploiting interconnected systems.</p>
+            </div>
+            <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700 hover:border-blue-400/30 transition-colors">
+                <i class="fa-solid fa-brain text-4xl text-blue-400 mb-4"></i>
+                <h5 class="text-slate-50 font-bold text-lg mb-3 uppercase">Accelerating AI Adoption</h5>
+                <p class="text-slate-400 text-sm leading-relaxed">Opportunities for efficiency are matched by risks from poorly understood models, data integrity issues, and vectors for manipulation.</p>
+            </div>
+            <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700 hover:border-purple-400/30 transition-colors">
+                <i class="fa-solid fa-atom text-4xl text-purple-400 mb-4"></i>
+                <h5 class="text-slate-50 font-bold text-lg mb-3 uppercase">Emergent Quantum Computing</h5>
+                <p class="text-slate-400 text-sm leading-relaxed">A long-term paradigm shift that threatens to render current cryptographic standards obsolete, requiring immediate strategic foresight.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTION SECTION (HIDDEN) -->
+    <div id="solutionSection" class="hidden max-w-6xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-10 text-left animate-fade-in mb-10 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-lime-accent/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+        
+        <h4 class="text-white text-2xl md:text-4xl font-bold mb-2 uppercase tracking-wide text-center">One Candidate, Three Convergent Worlds</h4>
+        <p class="text-slate-400 text-center text-base md:text-lg mb-12 max-w-3xl mx-auto">Addressing interconnected risks demands a professional who has deliberately cultivated expertise across three distinct domains.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <!-- Pillar 1: Regulator -->
+            <div onclick="openPillarModal(1)" class="bg-slate-900 p-8 rounded-xl border-t-4 border-yellow-500 cursor-pointer hover:bg-slate-950 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div class="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center mb-6 group-hover:bg-yellow-500/20 transition-colors">
+                    <i class="fa-solid fa-scale-balanced text-3xl text-yellow-500"></i>
+                </div>
+                <h5 class="text-yellow-500 font-bold text-xl mb-4 uppercase tracking-wider">1. The Seasoned Regulator</h5>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-yellow-500 mt-1"></i> Courage to downgrade Audit</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-yellow-500 mt-1"></i> FDIC failing institutions exp.</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-yellow-500 mt-1"></i> Regulatory Foresight</li>
+                </ul>
+                <div class="text-yellow-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    View Independence Case Study <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Technologist -->
+            <div onclick="openPillarModal(2)" class="bg-slate-900 p-8 rounded-xl border-t-4 border-blue-500 cursor-pointer hover:bg-slate-950 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                    <i class="fa-solid fa-code-branch text-3xl text-blue-500"></i>
+                </div>
+                <h5 class="text-blue-500 font-bold text-xl mb-4 uppercase tracking-wider">2. The Applied Technologist</h5>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Enabled Log4J remediation</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Rapid self-upskilling</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-blue-500 mt-1"></i> Technical Certifications</li>
+                </ul>
+                <div class="text-blue-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Crisis Response Case Study <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Synthesizer -->
+            <div onclick="openPillarModal(3)" class="bg-slate-900 p-8 rounded-xl border-t-4 border-purple-500 cursor-pointer hover:bg-slate-950 hover:-translate-y-1 transition-all duration-300 group shadow-lg">
+                <div class="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+                    <i class="fa-solid fa-chess text-3xl text-purple-500"></i>
+                </div>
+                <h5 class="text-purple-500 font-bold text-xl mb-4 uppercase tracking-wider">3. The Strategic Synthesizer</h5>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-purple-500 mt-1"></i> Educated 2,200+ bankers</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-purple-500 mt-1"></i> Shaped G7 & Basel policy</li>
+                    <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-purple-500 mt-1"></i> Global Standard Setting</li>
+                </ul>
+                <div class="text-purple-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Educator Case Study <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center border-t border-slate-700 pt-8">
+            <p class="text-lg md:text-xl text-slate-300 font-light italic">"The value is not in any single pillar, but in the <span class="text-lime-accent font-normal">unique perspective</span> created at their intersection."</p>
+        </div>
+    </div>
+
+    <!-- MISSION STATEMENT SECTION -->
+    <div class="max-w-4xl mx-auto mt-20 mb-20 px-6">
+        <div class="relative bg-slate-800/50 rounded-2xl p-10 border border-slate-700 overflow-hidden group hover:border-slate-600 transition-colors shadow-2xl">
+            
+            <!-- Decorative background glow -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-lime-accent/10 rounded-full blur-3xl group-hover:bg-lime-accent/20 transition-all duration-700"></div>
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-50 mb-10 tracking-wide uppercase relative z-10">
+                Ready to Advance the Mission
+            </h2>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                <!-- Vertical Bar & Quote -->
+                <div class="relative pl-6 border-l-4 border-amber-500 md:pl-10 py-2">
+                    <p class="text-xl md:text-2xl text-slate-200 font-light italic leading-relaxed">
+                        "Like any predator, cyber criminals attack the weak and the slow. You don't need to be faster than the bear... just faster than the person next to you."
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-center mt-10 text-lg md:text-xl font-medium text-cyan-400 tracking-wide">
+                Rhea Nygard has the perspective to ensure the financial system stays one step ahead.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<!-- PILLAR MODAL -->
+<div id="pillarModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 p-4">
+    <!-- Added max-height and scrolling support for small screens -->
+    <div class="bg-slate-900 border border-slate-700 p-8 md:p-12 rounded-2xl max-w-3xl w-full relative shadow-2xl transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto" id="modalContentBox">
+        <button onclick="closePillarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl z-10"><i class="fa-solid fa-xmark"></i></button>
+        <div id="modalContent">
+            <!-- Content Injected via JS -->
+        </div>
+    </div>
 </div>
 
 <!-- Chat Widget -->
@@ -330,7 +471,7 @@
     </div>
     <div id="chatMessages" class="flex-1 p-5 overflow-y-auto flex flex-col gap-4 bg-slate-950">
         <div class="p-3 rounded-xl text-sm leading-relaxed max-w-[85%] break-words bg-lime-accent/5 text-slate-300 self-start border border-lime-accent/20 rounded-bl-sm">
-            Hello! I can answer questions about her experience or skills. This is for DEMO purposes only.
+            Hello! I can answer questions about her experience or skills. I can also tell you some cyber jokes! This is for DEMO purposes only.
         </div>
     </div>
     <div class="p-4 border-t border-slate-700 flex gap-2 bg-slate-800 pb-8 md:pb-4"> <!-- Added extra padding bottom for mobile gesture bars -->
@@ -340,11 +481,139 @@
 </div>
 
 <script>
+    // --- Pillar Data for Modal ---
+    const pillarData = {
+        1: {
+            title: "Independent Judgement",
+            icon: "fa-scale-balanced",
+            colorClass: "text-yellow-500",
+            borderClass: "border-yellow-500/50",
+            content: `
+                <p class="text-2xl text-yellow-100/90 italic leading-relaxed font-light mb-6">"I don't have rose colored glasses... I have a true appreciation for controls because the bank could actually fail."</p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check mt-1 text-yellow-500"></i>
+                        <p class="text-lg text-slate-300"><strong>Courage to Act:</strong> Persuaded a Chief Audit Executive to accept a downgrade of their function, identifying gaps primary regulators missed.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-check mt-1 text-yellow-500"></i>
+                        <p class="text-lg text-slate-300"><strong>Crisis Experience:</strong> Served on FDIC pro-forma teams preparing opening balance sheets for acquiring institutions. Also maintained ongoing financial statements for surviving subsidiaries post the bank failure.</p>
+                    </div>
+                </div>
+            `
+        },
+        2: {
+            title: "Crisis Response",
+            icon: "fa-code-branch",
+            colorClass: "text-blue-500",
+            borderClass: "border-blue-500/50",
+            content: `
+                <p class="text-2xl text-blue-100/90 font-light leading-relaxed mb-8">Proactive, hands-on engagement with emerging technology, driven by a desire to understand risks at a technical level.</p>
+                
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-blue-500/30 mb-8">
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <strong class="text-blue-200 block text-xs uppercase tracking-wider mb-1">Situation</strong>
+                            <p class="text-slate-300 text-base leading-relaxed">A critical vulnerability (Log4J) threatened thousands of instances. Rapid response was impossible without a complete asset inventory.</p>
+                        </div>
+                        <div>
+                            <strong class="text-blue-200 block text-xs uppercase tracking-wider mb-1">Action</strong>
+                            <p class="text-slate-300 text-base leading-relaxed">Rhea consistently flagged incomplete CMDB as a top risk and monitored the closure of regulatory issues to establish a full IT asset inventory.</p>
+                        </div>
+                        <div>
+                            <strong class="text-blue-200 block text-xs uppercase tracking-wider mb-1">Result</strong>
+                            <p class="text-slate-300 text-base leading-relaxed">Because of this foundational work, the firm quickly identified and patched all instances, preventing exploitation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-2xl text-blue-100/90 italic border-l-4 border-blue-500 pl-4">"Curiosity is her superpower and she is always willing to share her knowledge with others."</p>
+            `
+        },
+        3: {
+            title: "Educating the Industry at Scale",
+            icon: "fa-chess",
+            colorClass: "text-purple-500",
+            borderClass: "border-purple-500/50",
+            content: `
+                <p class="text-2xl text-purple-100/90 font-light leading-relaxed mb-8">Connecting disparate concepts, translating technical info for diverse audiences, and building consensus across borders.</p>
+                
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-purple-500/30 mb-8">
+                    <p class="text-purple-300 font-bold text-sm uppercase tracking-wide mb-4">Leading Third-Party Risk Management (TPRM) Outreach</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-purple-900/30 p-4 rounded-lg border border-purple-500/20 text-center">
+                            <div class="text-purple-400 font-bold text-4xl mb-1">2,211</div>
+                            <div class="text-sm text-purple-200/70">Webinar Attendees</div>
+                        </div>
+                        <div class="bg-purple-900/30 p-4 rounded-lg border border-purple-500/20 text-center">
+                            <div class="text-purple-400 font-bold text-4xl mb-1">108</div>
+                            <div class="text-sm text-purple-200/70">Bankers per Session</div>
+                        </div>
+                        <div class="bg-purple-900/30 p-4 rounded-lg border border-purple-500/20 text-center">
+                            <div class="text-purple-400 font-bold text-4xl mb-1">6</div>
+                            <div class="text-sm text-purple-200/70">Office Hours Led</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-2xl text-purple-100/90 italic border-l-4 border-purple-500 pl-4">"Praise received for creating a repeatable 'office hours' process."</p>
+            `
+        }
+    };
+
+    function openPillarModal(id) {
+        const modal = document.getElementById('pillarModal');
+        const contentBox = document.getElementById('modalContent');
+        const data = pillarData[id];
+
+        contentBox.innerHTML = `
+            <div class="flex items-center gap-4 mb-6 border-b ${data.borderClass} pb-4">
+                <i class="fa-solid ${data.icon} text-4xl ${data.colorClass}"></i>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-50">${data.title}</h2>
+            </div>
+            <div>
+                ${data.content}
+            </div>
+        `;
+
+        modal.classList.remove('hidden');
+        // Small delay to allow display:block to apply before opacity transition
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            document.getElementById('modalContentBox').classList.remove('scale-95');
+            document.getElementById('modalContentBox').classList.add('scale-100');
+        }, 10);
+    }
+
+    function closePillarModal() {
+        const modal = document.getElementById('pillarModal');
+        modal.classList.add('opacity-0');
+        document.getElementById('modalContentBox').classList.add('scale-95');
+        document.getElementById('modalContentBox').classList.remove('scale-100');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    // Close modal on click outside
+    document.getElementById('pillarModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePillarModal();
+        }
+    });
+
+
     // 2. Career Analysis Feature (Now Pre-Baked/Static)
     function revealAnalysis() {
         const container = document.getElementById('analysisResult');
         const contentDiv = document.getElementById('analysisContent');
-        container.style.display = 'block'; // Tailwind doesn't have a direct 'display: block' toggle class utility without adding 'hidden' logic, so we keep standard JS for toggling visibility or remove 'hidden' class
+        
+        // Hide other sections if open to keep it clean
+        document.getElementById('problemSection').classList.add('hidden');
+        document.getElementById('solutionSection').classList.add('hidden');
+
         container.classList.remove('hidden');
         
         // This content is pre-generated so it works for recruiters without an API key
@@ -360,6 +629,26 @@
 
         // Scroll to the result
         container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Reveal Problem or Solution Sections
+    function revealSection(sectionId) {
+        const problem = document.getElementById('problemSection');
+        const solution = document.getElementById('solutionSection');
+        const analysis = document.getElementById('analysisResult');
+
+        // Hide analysis if open
+        analysis.classList.add('hidden');
+
+        if (sectionId === 'problemSection') {
+            problem.classList.remove('hidden');
+            solution.classList.add('hidden');
+            problem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            solution.classList.remove('hidden');
+            problem.classList.add('hidden');
+            solution.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     // 3. Chat Feature (Keyword-based simulation)
@@ -383,6 +672,26 @@
             btn.innerHTML = '<i class="fa-solid fa-chevron-down"></i> more';
             btn.classList.remove('bg-lime-accent', 'text-slate-900');
             btn.classList.add('bg-transparent', 'text-lime-accent');
+        }
+    }
+
+    // NEW: Toggle Pillar Details
+    function togglePillar(id, card) {
+        const details = document.getElementById(id);
+        const icon = card.querySelector('.fa-chevron-down') || card.querySelector('.fa-chevron-up');
+        
+        if (details.classList.contains('hidden')) {
+            details.classList.remove('hidden');
+            if (icon) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        } else {
+            details.classList.add('hidden');
+            if (icon) {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
         }
     }
 

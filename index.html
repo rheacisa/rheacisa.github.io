@@ -320,7 +320,7 @@
 </div>
 
 <!-- Chat Widget -->
-<div id="chatWidget" class="fixed bottom-8 right-8 w-[380px] h-[550px] bg-slate-900 border border-slate-700 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden z-50 translate-y-[120%] transition-transform duration-300">
+<div id="chatWidget" class="fixed bottom-0 left-0 w-full h-[85vh] rounded-t-2xl md:bottom-8 md:right-8 md:left-auto md:w-[380px] md:h-[550px] md:rounded-2xl bg-slate-900 border border-slate-700 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden z-50 translate-y-[120%] transition-transform duration-300">
     <div class="bg-slate-800 p-5 flex justify-between items-center border-b border-slate-700">
         <h4 class="m-0 text-slate-50 text-lg font-bold flex items-center gap-2"><i class="fa-solid fa-user-astronaut"></i> Rhea's Digital Twin</h4>
         <div class="flex gap-3 items-center">
@@ -333,8 +333,8 @@
             Hello! I can answer questions about her experience or skills. This is for DEMO purposes only.
         </div>
     </div>
-    <div class="p-4 border-t border-slate-700 flex gap-2 bg-slate-800">
-        <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleEnter(event)" class="flex-1 bg-slate-900 border border-slate-700 text-slate-50 p-3 rounded-lg outline-none font-urbanist focus:border-lime-accent">
+    <div class="p-4 border-t border-slate-700 flex gap-2 bg-slate-800 pb-8 md:pb-4"> <!-- Added extra padding bottom for mobile gesture bars -->
+        <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleEnter(event)" class="flex-1 bg-slate-900 border border-slate-700 text-slate-50 p-3 rounded-lg outline-none font-urbanist focus:border-lime-accent text-base"> <!-- text-base prevents zooming on iOS -->
         <button onclick="sendMessage()" class="bg-lime-accent text-slate-900 border-none w-11 h-11 rounded-lg cursor-pointer flex items-center justify-center hover:bg-lime-hover transition-colors"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
 </div>
